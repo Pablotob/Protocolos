@@ -6,7 +6,7 @@
     <title>Protocolos de Seguridad en la Red</title>
     <style>
         :root {
-            --primary-color: #1a2b3c;
+            --primary-color: #000000;
             --secondary-color: #2c82c9;
             --accent-color: #ff6b6b;
             --light-color: #f7f9fc;
@@ -14,6 +14,23 @@
             --text-color: #333;
             --shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             --gradient: linear-gradient(135deg, #1a2b3c, #2c82c9);
+            --bg-color: #f5f7fa;
+            --card-bg: white;
+            --header-bg: linear-gradient(135deg, #1a2b3c, #2c82c9);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #2c82c9;
+            --secondary-color: #4da8ff;
+            --accent-color: #ff8a8a;
+            --light-color: #2d3748;
+            --dark-color: #1a202c;
+            --text-color: #e2e8f0;
+            --shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            --gradient: linear-gradient(135deg, #2d3748, #4a5568);
+            --bg-color: #1a202c;
+            --card-bg: #2d3748;
+            --header-bg: linear-gradient(135deg, #2d3748, #4a5568);
         }
 
         * {
@@ -21,17 +38,18 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
-            background-color: #f5f7fa;
+            background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            background-image: linear-gradient(to bottom, #f5f7fa, #e4e8f0);
+            background-image: linear-gradient(to bottom, var(--bg-color), var(--light-color));
         }
 
         header {
-            background: var(--gradient);
+            background: var(--header-bg);
             color: white;
             padding: 2.5rem 0;
             text-align: center;
@@ -111,7 +129,7 @@
         }
 
         .card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 12px;
             box-shadow: var(--shadow);
             padding: 1.8rem;
@@ -208,7 +226,7 @@
 
         .member p {
             font-size: 0.9rem;
-            color: #666;
+            color: var(--text-color);
         }
 
         .video-container {
@@ -282,8 +300,8 @@
             display: flex;
             justify-content: center;
             margin: 2rem 0;
-            border-bottom: 2px solid #e0e0e0;
-            background: white;
+            border-bottom: 2px solid var(--light-color);
+            background: var(--card-bg);
             border-radius: 12px;
             padding: 0.5rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
@@ -346,6 +364,47 @@
             color: var(--secondary-color);
         }
 
+        /* Toggle de modo oscuro */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-color);
+        }
+
+        .sun-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .sun-icon {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .protocol-section {
                 flex-direction: column;
@@ -391,6 +450,23 @@
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo oscuro/claro">
+        <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </button>
+
     <header>
         <div class="container">
             <h1>Protocolos de Seguridad en la Red</h1>
@@ -515,7 +591,7 @@
 
         <div id="team" class="tab-content">
             <h2>Nuestro Equipo</h2>
-            <p>Somos un equipo de 5 estudiantes trabajando en conjunto para investigar y presentar los protocolos IPSec y SET:</p>
+            <p>Somos un equipo de 6 estudiantes trabajando en conjunto para investigar y presentar los protocolos IPSec y SET:</p>
             
             <div class="team-members">
                 <div class="member card">
@@ -542,6 +618,11 @@
                     <img src="images\Joma.jpeg" alt="Foto del integrante 5" class="member-photo">
                     <h4>Jose Martin Kuh Medina</h4>
                     <p>Rol: Diseñador web</p>
+                </div>
+                <div class="member card">
+                    <img src="images\jediael.jpeg" alt="Foto del integrante 3" class="member-photo">
+                    <h4>Jediael Abinadab Carrillo Vazquez</h4>
+                    <p>Rol: Coordinador de proyecto</p>
                 </div>
             </div>
         </div>
@@ -582,7 +663,60 @@
             <p>Proyecto de Seguridad Informática - Protocolos de Seguridad en la Red</p>
             <p>Cuatrimestre: IDS – 7A | Fecha de entrega: 14 de Noviembre de 2025</p>
             <p>Profesor: I.S.C Emmanuel de Atocha Perez Ojeda</p>
-        </div>
+        <!-- 🔹 Dragón animado estilo Kali Linux - ESQUINA SUPERIOR IZQUIERDA -->
+<div class="dragon-container top-left">
+    <img src="images/kali2.jpg" alt="Dragón Kali Linux" class="dragon-animado">
+</div>
+
+<style>
+.dragon-container.top-left {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+}
+
+.dragon-animado {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0.9;
+    animation: giroDragon 8s infinite linear;
+    transform-origin: center;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.5);
+    filter: brightness(1.1) contrast(1.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 🔄 Animación: gira continuamente como un disco de música */
+@keyframes giroDragon {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Efecto de brillo al pasar el mouse */
+.dragon-animado:hover {
+    animation-duration: 3s;
+    box-shadow: 0 0 25px rgba(0, 200, 255, 0.8);
+    filter: brightness(1.3) contrast(1.2);
+}
+
+/* Responsive para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .dragon-container.top-left {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .dragon-animado {
+        width: 60px;
+        height: 60px;
+    }
+}
+</style>
+</style>
+
     </footer>
 
     <script>
@@ -608,10 +742,25 @@
                 });
             });
             
+            // Función para cambiar el tema
+            const themeToggle = document.getElementById('themeToggle');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            
+            // Aplicar el tema guardado
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+            
             // Simulación de carga de datos
             console.log("Página cargada correctamente");
             console.log("Protocolos asignados: IPSec y SET");
-            console.log("Integrantes del equipo: 5");
+            console.log("Integrantes del equipo: 6");
         });
     </script>
 </body>
