@@ -76,23 +76,137 @@
                 <p>Aquí puedes agregar información sobre los protocolos que investigó el equipo 1.</p>
             </div>
         </div>
-        <!-- EQUIPO 2 -->
 
-        <!---------------------------------------------------------------------------- EQUIPO 2 -----------------------------------------------------------------
-        <div id="team2" class="tab-content">
-            <script>
-            function cargarContenido(id, archivo) {
-                fetch(archivo).then(res => res.text()).then(html => {
-                    document.getElementById(id).innerHTML = html;
-                });
-             }
-              cargarContenido("team2", "equipo2.html");
-              </script>
-        </div>
+        <!---------------------------------------------------------------------------- EQUIPO 2 ----------------------------------------------------------------->
+        <div class="card">
+    <h2>Equipo 2</h2>
+    <h2>Protocolos SSH y FTPS</h2>
+            <p>Nuestro equipo está investigando los protocolos SSH y FTPS:</p>
+            
+            <div class="protocol-section">
+                <div class="protocol-card card">
+                    <div class="protocol-icon">🔒</div>
+                    <h3>SSH (Secure Shell)</h3>
+                    <p><strong>Función principal</strong> 
+                        <p>Proporcionar acceso remoto seguro a sistemas y permitir la administración 
+                        protegida mediante cifrado, autenticación y túneles seguros. 
+                        Diseñado como una alternativa segura a los protocolos no cifrados como telnet y rlogin
+                        </p>
+                    </p>
+                    
+                    <p><strong>Capa del modelo OSI</strong> 
+                        <p>Se encuentra en la capa de aplicación del Modelo OSI (7).
+                        SSH está basado en el protocolo de transporte TCP y utiliza criptografía de clave pública/privada 
+                        para garantizar la privacidad de la información que se transfiere a través de la conexión.</p>
+                    </p>
+                    
+                    <p><strong>Tipo de seguridad</strong> 
+                        <p>Cifrado: SSH establece conexiones cifradas para proteger la información transmitida.</p> 
+                        <p>Autenticación: Utiliza métodos de autenticación seguros para verificar la identidad del usuario. </p>
+                        <p>Integridad de los datos: Asegura que los datos no se modifiquen durante la transmisión. </p>
+                        <p>Túnel: Permite que otros protocolos se transporten de forma segura a través de SSH.</p> 
+                    </p>
+                    
+                    <p><strong>Ventajas</strong> 
+                        <P>1. Después de la primera conexión, el cliente puede saber que se conectará al mismo servidor en futuras sesiones.</P> 
+                        <p>2. El cliente transmite al servidor el usuario y la contraseña en formato cifrado.</p> 
+                        <p>3. Todos los datos que se envían y reciben durante la conexión se transfieren cifrados.</p> 
+                        <p>4. El cliente puede ejecutar desde el terminal aplicaciones gráficas de forma segura.</p> 
+                    </p>
+                    
+                    <p><strong>Limitaciones:</strong> 
+                        <p>1. Menor compatibilidad con entornos antiguos: No todos los servidores FTP tradicionales soportan SFTP.</p> 
+                        <p>2. Configuración inicial técnica: Requiere generar y administrar claves SSH, lo que puede ser complejo para usuarios novatos.</p> 
+                        <p>3. Mayor consumo de CPU: El cifrado y descifrado en tiempo real puede demandar más recursos en sistemas de baja potencia.</p> 
+                        <p>4. No es lo mismo que FTPS: Aunque ambos son “seguros”, no son compatibles entre sí (usan protocolos distintos).</p> 
+                    </p>
+                    
+                    <p><strong>Ejemplo de uso:</strong> </p>
+                </div>
 
+                <div class="protocol-card card">
+                    <div class="protocol-icon">📁</div>
+                    <h3>FTPS (File Transfer Protocol Secure)</h3>
+                    <p><strong>Función principal</strong> 
+                        <p>Permitir la transferencia segura de archivos mediante FTP, 
+                        añadiendo cifrado a través de SSL/TLS para proteger credenciales y datos.
+                        </p>
+                    
+                    <p><strong>Capa del modelo OSI</strong> 
+                        <p>Se encunetra en la Capa de Aplicación del Modelo OSI (7) 
+                        que permite la transferencia de archivos entre dispositivos en una red.
+                        </p>
+                    </p>
+                    
+                    <p><strong>Tipo de seguridad</strong> 
+                        <p>cifrando los datos y/o comandos transmitidos, lo que protege la información contra accesos 
+                        no autorizados y manipulaciones durante la transferencia.</p>
+                </p>
+                    
+                    <p><strong>Ventajas</strong> 
+                        <p>1. Utiliza el protocolo SSL (Secure Sockets Layer) o TLS (Transport Layer Security) para establecer una conexión segura entre el cliente y el servidor.</p> 
+                        <p>2. Proporciona autenticación y cifrado de datos, lo que garantiza que los archivos transferidos estén protegidos contra accesos no autorizados.</p>
+                        <p>3. Ofrece opciones de configuración flexibles, como la elección del puerto de conexión y el tipo de cifrado utilizado.</p> 
+                        <p>4. Al utilizar FTPS, los usuarios pueden tener la tranquilidad de que sus datos están protegidos durante la transferencia, lo que ayuda a cumplir con los requisitos de seguridad y privacidad. </p>
+                    </p>
+                    
+                    <p><strong>Limitaciones</strong>
+                        <p>1. Configuración más compleja: Requiere certificados SSL/TLS y configuración de puertos adicionales.</p> 
+                        <p>2. Problemas con firewalls: Usa múltiples puertos (control y datos), lo que complica su uso detrás de NAT o firewalls estrictos.</p> 
+                        <p>3. Menor estandarización: Algunos clientes/servidores implementan FTPS de forma diferente (implícito o explícito), lo que puede causar incompatibilidades.</p> 
+                        <p>4. Dependencia de certificados: Si el certificado expira o no está bien configurado, la conexión falla. </p>
+                    </p>
+                    
+                    <p><strong>Ejemplo de uso:</strong> </p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Demostración Práctica</h3>
+                <p>A continuación se presenta un video que muestra la implementación y funcionamiento de los protocolos SSH y FTPS:</p>
+                
+                <div class="video-container">
+                    <iframe src="https://youtu.be/ZjB_O-OBq9o?si=RheSr81-VWzklkdz" allowfullscreen></iframe>
+                </div>
+                <p><em>video demostrativo del uso de los protocolos SSH y FTPS</em></p>
+            </div>
+            
+            <div class="card">
+                <h2>Referencias y Mienbros de Equipo</h2>
+                <h3>Fuentes de Investigación</h3>
+                <ul class="references">
+                 <li>Alegsa, L. (sf). ALEGSA.com.ar: Definición de FTPS (FTP Secure, FTP/SSL).</li>
+                 <li>Deyimar, A.(2025). hostinger: ¿Cómo funciona el SSH?.</li>   
+                 <li>rsadmin101(sf). Qué protocolo utiliza SSH.</li> 
+                 <li>Gerardo(sf).sensacionweb: FTPS (FTP Seguro): Qué es, características y beneficios Título SEO corto: FTPS: seguridad y eficiencia en la transferencia de archivos.</li> 
+                 <li>apuntesycursos(sf). Conexiones Seguras con SSH: Características, Ventajas y Funcionamiento.</li> 
+                </ul>
+            <h3>Equipo</h3>    
+            <div class="team-members">
+                <div class="member card">
+                    <h4>Canche Chi Luis Eduardo</h4>
+                    <p>Matricula: 2321298</p>
+                </div>
+                <div class="member card">
+                    <h4>Chan Chim José Isac</h4>
+                    <p>Matricula: 23212904</p>
+                </div>
+                <div class="member card">
+                    <h4>Moreno Ek Melquiel de Jesus</h4>
+                    <p>Matricula: 23212927</p>
+                </div>
+                <div class="member card">
+                    <h4>Trujeque Euan Gael Jesus</h4>
+                    <p>Matricula: 23212939</p>
+                </div>
+                <div class="member card">
+                    <h4>Uitz Uitz Diego Josué</h4>
+                    <p>Matricula: 23212936</p>
+                </div>
+            </div>  
+            </div>
+</div>
 
-        <!-- EQUIPO 3 -->
-=======
         <!---------------------------------------------------------------------------- EQUIPO 3 -------------------------------------------------------------------->
         <div id="team3" class="tab-content">
             <h2>Nuestro Equipo</h2>
